@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main>
+      <AddSaylor />
+      <!--<SaylorDate @dateString="setWillDate"/>
+      <SaylorDate @dateString="setProbateDate"/>-->
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import SaylorDate from './components/SaylorDate';
+import AddSaylor from './components/AddSaylor';
+//import SaylorDate from './components/SaylorDate';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+   // SaylorDate,
+    AddSaylor,
+  },
+
+  data: () => ({
+    noteSet: '',
+    willDate: '',
+    probateDate: '',
+    showAddSaylor: false,
+  }),
+  methods: {
+    setWillDate({year, month, day}) {
+      this.willDate = year+'-'+month+'-'+day
+    },
+    setProbateDate({year, month, day}) {
+      this.probateDate = year+'-'+month+'-'+day
+    },
+  }
+};
+</script>
